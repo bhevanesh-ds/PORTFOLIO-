@@ -8,17 +8,8 @@
 <style>
 *,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
 :root{
-  --bg:#0d0a1a; 
-  --bg2:#130d2a;
-  --card:#1a1035;
-  --accent:#c084fc;
-  --accent2:#a855f7;
-  --accent3:#e879f9;
-  --text:#f0e6ff;
-  --muted:#9d8ec0;
-  --border:#2e1f50;
-  --sans:'Space Grotesk',sans-serif;
-  --mono:'Fira Code',monospace;
+  --bg:#0d0a1a;--bg2:#130d2a;--card:#1a1035;--accent:#c084fc;--accent2:#a855f7;--accent3:#e879f9;
+  --text:#f0e6ff;--muted:#9d8ec0;--border:#2e1f50;--sans:'Space Grotesk',sans-serif;--mono:'Fira Code',monospace;
 }
 html{scroll-behavior:smooth}
 body{background:var(--bg);color:var(--text);font-family:var(--sans);overflow-x:hidden}
@@ -30,14 +21,14 @@ nav.scrolled{background:rgba(13,10,26,0.95);border-bottom:1px solid var(--border
 .logo{font-family:var(--mono);font-size:1.2rem;color:var(--accent);letter-spacing:0.05em}
 .logo em{color:var(--accent3);font-style:normal}
 .nav-links{display:flex;gap:2rem}
-.nav-links a{color:var(--muted);text-decoration:none;font-size:0.9rem;font-weight:500;letter-spacing:0.05em;transition:color 0.2s;position:relative}
+.nav-links a{color:var(--muted);text-decoration:none;font-size:0.9rem;font-weight:500;transition:color 0.2s;position:relative}
 .nav-links a::after{content:'';position:absolute;bottom:-4px;left:0;width:0;height:1px;background:var(--accent);transition:width 0.3s}
 .nav-links a:hover{color:var(--accent)}
 .nav-links a:hover::after{width:100%}
-.hero{min-height:100vh;display:flex;align-items:center;position:relative;z-index:1;padding:0 2.5rem;max-width:1100px;margin:0 auto}
+.hero{min-height:100vh;display:flex;align-items:center;position:relative;z-index:1;padding:0 2.5rem;max-width:1100px;margin:0 auto;gap:3rem}
 .hero-content{flex:1}
 .hero-badge{display:inline-flex;align-items:center;gap:0.5rem;background:rgba(168,85,247,0.1);border:1px solid rgba(168,85,247,0.3);padding:0.4rem 1rem;border-radius:100px;font-family:var(--mono);font-size:0.75rem;color:var(--accent);margin-bottom:1.5rem;animation:fadeUp 0.6s ease both}
-.hero-badge .dot{width:6px;height:6px;border-radius:50%;background:var(--accent3);animation:pulse 2s infinite}
+.hero-badge .dot{width:6px;height:6px;border-radius:50%;background:var(--accent3);animation:pulse 2s infinite;flex-shrink:0}
 @keyframes pulse{0%,100%{opacity:1;transform:scale(1)}50%{opacity:0.5;transform:scale(1.4)}}
 .hero h1{font-size:clamp(3rem,8vw,6rem);font-weight:700;line-height:1;letter-spacing:-0.03em;animation:fadeUp 0.7s 0.1s ease both}
 .hero h1 .name{background:linear-gradient(135deg,var(--text) 0%,var(--accent) 50%,var(--accent3) 100%);-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text}
@@ -46,24 +37,22 @@ nav.scrolled{background:rgba(13,10,26,0.95);border-bottom:1px solid var(--border
 .hero-role .typed{color:var(--accent3)}
 .cursor{animation:blink 1s step-end infinite}
 .hero-desc{max-width:480px;color:var(--muted);font-size:1rem;line-height:1.8;margin-top:1.2rem;animation:fadeUp 0.7s 0.3s ease both}
-.college-badge{display:inline-flex;align-items:center;gap:0.5rem;background:rgba(232,121,249,0.08);border:1px solid rgba(232,121,249,0.25);padding:0.4rem 1rem;border-radius:100px;font-family:var(--mono);font-size:0.72rem;color:var(--accent3);margin-top:0.9rem;animation:fadeUp 0.7s 0.35s ease both}
 .hero-btns{display:flex;gap:1rem;margin-top:2rem;animation:fadeUp 0.7s 0.4s ease both}
 .btn{padding:0.75rem 1.8rem;border-radius:8px;font-family:var(--sans);font-weight:600;font-size:0.95rem;cursor:pointer;text-decoration:none;transition:all 0.2s;display:inline-flex;align-items:center;gap:0.5rem}
 .btn-glow{background:linear-gradient(135deg,var(--accent2),var(--accent3));color:#fff;border:none;box-shadow:0 0 20px rgba(168,85,247,0.4)}
 .btn-glow:hover{transform:translateY(-2px);box-shadow:0 0 35px rgba(168,85,247,0.6)}
 .btn-ghost{background:transparent;color:var(--accent);border:1px solid var(--border)}
 .btn-ghost:hover{border-color:var(--accent);background:rgba(192,132,252,0.08)}
-.hero-avatar{width:320px;height:320px;flex-shrink:0;position:relative;margin-left:4rem;animation:fadeUp 0.7s 0.2s ease both}
-.avatar-ring{width:100%;height:100%;border-radius:50%;border:2px solid transparent;background:linear-gradient(135deg,var(--bg),var(--bg)) padding-box,linear-gradient(135deg,var(--accent),var(--accent3)) border-box;display:flex;align-items:center;justify-content:center;position:relative}
-.avatar-ring::before{content:'';position:absolute;inset:-8px;border-radius:50%;border:1px solid rgba(192,132,252,0.2);animation:spin 8s linear infinite}
-.avatar-inner{width:88%;height:88%;border-radius:50%;background:linear-gradient(135deg,#1a1035,#2a1060);display:flex;align-items:center;justify-content:center;font-size:5rem;position:relative;overflow:hidden}
-.avatar-inner::after{content:'';position:absolute;inset:0;background:linear-gradient(135deg,rgba(192,132,252,0.1),rgba(232,121,249,0.05))}
-.avatar-tag{position:absolute;bottom:-10px;right:10px;background:linear-gradient(135deg,var(--accent2),var(--accent3));color:#fff;font-family:var(--mono);font-size:0.7rem;padding:0.3rem 0.8rem;border-radius:100px}
 .stats-row{display:flex;gap:1.5rem;margin-top:2.5rem;animation:fadeUp 0.7s 0.5s ease both}
 .stat{text-align:center}
 .stat-num{font-size:1.6rem;font-weight:700;color:var(--accent);line-height:1}
 .stat-label{font-size:0.75rem;color:var(--muted);margin-top:0.2rem;font-family:var(--mono)}
 .stat-divider{width:1px;background:var(--border)}
+.hero-avatar{width:300px;height:300px;flex-shrink:0;position:relative;animation:fadeUp 0.7s 0.2s ease both}
+.avatar-ring{width:100%;height:100%;border-radius:50%;border:2px solid transparent;background:linear-gradient(135deg,var(--bg),var(--bg)) padding-box,linear-gradient(135deg,var(--accent),var(--accent3)) border-box;display:flex;align-items:center;justify-content:center;position:relative}
+.avatar-ring::before{content:'';position:absolute;inset:-8px;border-radius:50%;border:1px solid rgba(192,132,252,0.2);animation:spin 8s linear infinite}
+.avatar-inner{width:88%;height:88%;border-radius:50%;background:linear-gradient(135deg,#1a1035,#2a1060);display:flex;align-items:center;justify-content:center;font-size:5rem}
+.avatar-tag{position:absolute;bottom:-10px;right:10px;background:linear-gradient(135deg,var(--accent2),var(--accent3));color:#fff;font-family:var(--mono);font-size:0.7rem;padding:0.3rem 0.8rem;border-radius:100px}
 @keyframes spin{from{transform:rotate(0deg)}to{transform:rotate(360deg)}}
 @keyframes fadeUp{from{opacity:0;transform:translateY(30px)}to{opacity:1;transform:translateY(0)}}
 @keyframes blink{0%,100%{opacity:1}50%{opacity:0}}
@@ -95,9 +84,7 @@ nav.scrolled{background:rgba(13,10,26,0.95);border-bottom:1px solid var(--border
 .bar-fill{height:100%;border-radius:4px;background:linear-gradient(90deg,var(--accent2),var(--accent3));width:0;transition:width 1.4s cubic-bezier(0.22,1,0.36,1)}
 .projects-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(300px,1fr));gap:1.5rem}
 .project-card{background:var(--card);border:1px solid var(--border);border-radius:16px;padding:1.75rem;transition:all 0.25s;position:relative;overflow:hidden;display:flex;flex-direction:column}
-.project-card::after{content:'';position:absolute;inset:0;background:linear-gradient(135deg,rgba(168,85,247,0.03),rgba(232,121,249,0.03));opacity:0;transition:opacity 0.3s}
 .project-card:hover{border-color:rgba(192,132,252,0.35);transform:translateY(-6px);box-shadow:0 20px 40px rgba(13,10,26,0.6)}
-.project-card:hover::after{opacity:1}
 .project-header{display:flex;justify-content:space-between;align-items:flex-start;margin-bottom:1rem}
 .project-icon{width:44px;height:44px;border-radius:12px;background:linear-gradient(135deg,rgba(168,85,247,0.2),rgba(232,121,249,0.1));display:flex;align-items:center;justify-content:center;font-size:1.3rem}
 .project-num{font-family:var(--mono);font-size:0.7rem;color:var(--muted)}
@@ -126,14 +113,15 @@ footer span{background:linear-gradient(135deg,var(--accent),var(--accent3));-web
 .reveal{opacity:0;transform:translateY(40px);transition:opacity 0.7s ease,transform 0.7s ease}
 .reveal.visible{opacity:1;transform:translateY(0)}
 @media(max-width:768px){
-  .hero{flex-direction:column;text-align:center;padding-top:7rem}
-  .hero-avatar{width:200px;height:200px;margin:2rem auto 0}
+  .hero{flex-direction:column;text-align:center;padding-top:7rem;gap:2rem}
+  .hero-avatar{width:200px;height:200px;margin:0 auto}
   .about-grid,.contact-wrap{grid-template-columns:1fr}
   .about-card.wide{grid-column:1}
   .stats-row{justify-content:center}
   nav{padding:1rem 1.25rem}
   .section{padding:4rem 1.25rem}
   .hero-btns{justify-content:center}
+  .hero-desc{margin:1rem auto 0}
 }
 </style>
 </head>
@@ -149,14 +137,12 @@ footer span{background:linear-gradient(135deg,var(--accent),var(--accent3));-web
   </div>
 </nav>
 
-<!-- HERO -->
 <div class="hero" id="home">
   <div class="hero-content">
-    <div class="hero-badge"><span class="dot"></span> 🎓 GITAM University · Andhra Pradesh</div>
+    <div class="hero-badge"><span class="dot"></span> 🎓 Gandhi Institute of Technology and Management (GITAM)</div>
     <h1><span class="name">Bhevanesh</span><span class="last">Naidu.</span></h1>
     <div class="hero-role"><span class="typed" id="typed"></span><span class="cursor">|</span></div>
-    <p class="hero-desc">B.Tech student at <strong style="color:var(--accent)">Gandhi Institute of Technology and Management (GITAM)</strong>, Andhra Pradesh — passionate about turning raw data into meaningful insights using Python and Machine Learning.</p>
-    <div class="college-badge">🎓 Gandhi Institute of Technology &amp; Management — GITAM</div>
+    <p class="hero-desc">B.Tech student at <strong style="color:var(--accent)">GITAM University</strong>, Andhra Pradesh — passionate about turning raw data into meaningful insights using Python and Machine Learning.</p>
     <div class="hero-btns">
       <a href="#projects" class="btn btn-glow">View Projects</a>
       <a href="#contact" class="btn btn-ghost">Contact Me</a>
@@ -177,7 +163,6 @@ footer span{background:linear-gradient(135deg,var(--accent),var(--accent3));-web
   </div>
 </div>
 
-<!-- ABOUT -->
 <section class="section reveal" id="about">
   <div class="section-header">
     <div class="section-eyebrow">// 01. about_me</div>
@@ -187,13 +172,12 @@ footer span{background:linear-gradient(135deg,var(--accent),var(--accent3));-web
     <div class="about-card wide">
       <div class="card-icon">🧑‍🎓</div>
       <div class="card-title">$ whoami</div>
-      <div class="card-text">I'm Bhevanesh Naidu, an engineering student at GITAM (Gandhi Institute of Technology and Management), Andhra Pradesh. I'm passionate about Data Science and Python — turning raw data into meaningful insights through analysis, visualization, and machine learning.</div>
+      <div class="card-text">I'm Bhevanesh Naidu, a B.Tech student at Gandhi Institute of Technology and Management (GITAM), Andhra Pradesh. I'm passionate about Data Science and Python — turning raw data into meaningful insights through analysis, visualization, and machine learning.</div>
       <div class="pills">
         <span class="pill">📍 Andhra Pradesh, IN</span>
         <span class="pill">🎓 GITAM University</span>
         <span class="pill">📊 Data Science</span>
         <span class="pill">🐍 Python Dev</span>
-        <span class="pill">⚡ B.Tech Engineering</span>
       </div>
     </div>
     <div class="about-card">
@@ -209,7 +193,6 @@ footer span{background:linear-gradient(135deg,var(--accent),var(--accent3));-web
   </div>
 </section>
 
-<!-- SKILLS -->
 <section class="section reveal" id="skills">
   <div class="section-header">
     <div class="section-eyebrow">// 02. tech_stack</div>
@@ -250,7 +233,6 @@ footer span{background:linear-gradient(135deg,var(--accent),var(--accent3));-web
   </div>
 </section>
 
-<!-- PROJECTS -->
 <section class="section reveal" id="projects">
   <div class="section-header">
     <div class="section-eyebrow">// 03. projects</div>
@@ -296,7 +278,6 @@ footer span{background:linear-gradient(135deg,var(--accent),var(--accent3));-web
   </div>
 </section>
 
-<!-- CONTACT -->
 <section class="section reveal" id="contact">
   <div class="section-header">
     <div class="section-eyebrow">// 04. contact</div>
@@ -311,8 +292,12 @@ footer span{background:linear-gradient(135deg,var(--accent),var(--accent3));-web
         <div class="contact-item-text">bhavaneshnaidu14@gmail.com</div>
       </a>
       <a href="#" class="contact-item">
+        <div class="contact-item-icon">📍</div>
+        <div class="contact-item-text">Andhra Pradesh, India</div>
+      </a>
+      <a href="#" class="contact-item">
         <div class="contact-item-icon">🎓</div>
-        <div class="contact-item-text">GITAM University, Andhra Pradesh</div>
+        <div class="contact-item-text">GITAM University</div>
       </a>
       <a href="#" class="contact-item">
         <div class="contact-item-icon">🐙</div>
@@ -322,4 +307,42 @@ footer span{background:linear-gradient(135deg,var(--accent),var(--accent3));-web
     <div class="contact-form">
       <div class="form-group"><label class="form-label">Your Name</label><input type="text" class="form-input" placeholder="John Doe"/></div>
       <div class="form-group"><label class="form-label">Your Email</label><input type="email" class="form-input" placeholder="john@email.com"/></div>
-      <div class="form-group"><label class="form-label">Message</label><textarea class="form-
+      <div class="form-group"><label class="form-label">Message</label><textarea class="form-input" placeholder="Hey Bhevanesh, let's connect!"></textarea></div>
+      <button class="form-btn">Send Message →</button>
+    </div>
+  </div>
+</section>
+
+<footer>Designed & Built with 💜 by <span>Bhevanesh Naidu</span> · 2025</footer>
+
+<script>
+const pc=document.getElementById('particles');
+for(let i=0;i<25;i++){
+  const p=document.createElement('div');p.className='particle';
+  const s=Math.random()*4+2;
+  p.style.cssText=`width:${s}px;height:${s}px;left:${Math.random()*100}%;background:hsl(${270+Math.random()*40},70%,70%);animation-duration:${8+Math.random()*12}s;animation-delay:${Math.random()*10}s`;
+  pc.appendChild(p);
+}
+window.addEventListener('scroll',()=>{document.getElementById('navbar').classList.toggle('scrolled',window.scrollY>50);});
+const phrases=['Data Science Student 📊','Python Developer 🐍','ML Enthusiast 🤖','Data Analyst 📈','Problem Solver 💡'];
+let pi=0,ci=0,del=false;
+const el=document.getElementById('typed');
+function type(){
+  const w=phrases[pi];
+  if(!del){el.textContent=w.slice(0,ci+1);ci++;if(ci===w.length){del=true;setTimeout(type,1400);return;}}
+  else{el.textContent=w.slice(0,ci-1);ci--;if(ci===0){del=false;pi=(pi+1)%phrases.length;}}
+  setTimeout(type,del?55:95);
+}
+type();
+const obs=new IntersectionObserver(entries=>{entries.forEach(e=>{if(e.isIntersecting)e.target.classList.add('visible');});},{threshold:0.1});
+document.querySelectorAll('.reveal').forEach(el=>obs.observe(el));
+const sobs=new IntersectionObserver(entries=>{
+  entries.forEach(e=>{if(e.isIntersecting){const f=e.target.querySelector('.bar-fill');if(f)f.style.width=e.target.dataset.level+'%';}});
+},{threshold:0.3});
+document.querySelectorAll('.skill-item').forEach(c=>sobs.observe(c));
+document.querySelectorAll('a[href^="#"]').forEach(a=>{
+  a.addEventListener('click',e=>{e.preventDefault();const t=document.querySelector(a.getAttribute('href'));if(t)t.scrollIntoView({behavior:'smooth'});});
+});
+</script>
+</body>
+</html>
