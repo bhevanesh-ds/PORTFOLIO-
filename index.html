@@ -287,7 +287,7 @@ footer span{background:linear-gradient(135deg,var(--accent),var(--accent3));-web
     <div class="contact-left">
       <h3>Let's Connect 👋</h3>
       <p>Whether it's a project, collaboration, or just a data chat — feel free to reach out anytime!</p>
-      <a href="mailto:bhavaneshnaidu14@gmail.com" class="contact-item">
+      <a href="mailto:bhavaneshnaidu14@gmail.com" class="contact-item" target="_blank">
         <div class="contact-item-icon">📧</div>
         <div class="contact-item-text">bhavaneshnaidu14@gmail.com</div>
       </a>
@@ -295,13 +295,13 @@ footer span{background:linear-gradient(135deg,var(--accent),var(--accent3));-web
         <div class="contact-item-icon">📍</div>
         <div class="contact-item-text">Andhra Pradesh, India</div>
       </a>
-      <a href="#" class="contact-item">
+      <a href="https://www.gitam.edu" class="contact-item" target="_blank">
         <div class="contact-item-icon">🎓</div>
         <div class="contact-item-text">GITAM University</div>
       </a>
-      <a href="#" class="contact-item">
+      <a href="https://github.com/bhevanesh_ds" class="contact-item" target="_blank">
         <div class="contact-item-icon">🐙</div>
-        <div class="contact-item-text">github.com/bhevanesh</div>
+        <div class="contact-item-text">github.com/bhevanesh_ds</div>
       </a>
     </div>
     <div class="contact-form">
@@ -315,7 +315,7 @@ footer span{background:linear-gradient(135deg,var(--accent),var(--accent3));-web
 
 <footer>Designed & Built with 💜 by <span>Bhevanesh Naidu</span> · 2025</footer>
 
-<script>
+<script data-cfasync="false" src="/cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js"></script><script>
 const pc=document.getElementById('particles');
 for(let i=0;i<25;i++){
   const p=document.createElement('div');p.className='particle';
@@ -339,10 +339,4 @@ document.querySelectorAll('.reveal').forEach(el=>obs.observe(el));
 const sobs=new IntersectionObserver(entries=>{
   entries.forEach(e=>{if(e.isIntersecting){const f=e.target.querySelector('.bar-fill');if(f)f.style.width=e.target.dataset.level+'%';}});
 },{threshold:0.3});
-document.querySelectorAll('.skill-item').forEach(c=>sobs.observe(c));
-document.querySelectorAll('a[href^="#"]').forEach(a=>{
-  a.addEventListener('click',e=>{e.preventDefault();const t=document.querySelector(a.getAttribute('href'));if(t)t.scrollIntoView({behavior:'smooth'});});
-});
-</script>
-</body>
-</html>
+document.querySelectorAll('.skill-item').forEach(c=>
