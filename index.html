@@ -120,24 +120,23 @@ nav.scrolled{background:rgba(6,9,18,0.95);border-bottom:1px solid var(--border);
 .pill{font-family:var(--mono);font-size:0.7rem;background:rgba(77,142,240,0.08);border:1px solid rgba(77,142,240,0.2);color:var(--accent3);padding:0.3rem 0.85rem;border-radius:100px;transition:all 0.2s}
 .pill:hover{background:rgba(77,142,240,0.18);transform:scale(1.05)}
 
-.skill-group{margin-bottom:2.5rem}
-.sg-header{display:flex;align-items:center;gap:0.75rem;margin-bottom:1.25rem}
-.sg-icon{font-size:1.2rem}
-.sg-title{font-size:0.72rem;font-weight:600;color:#8899b8;letter-spacing:0.18em;text-transform:uppercase;flex:1}
-.sg-header::after{content:'';flex:2;height:1px;background:var(--border)}
-.badge-wrap{display:flex;flex-wrap:wrap;gap:1rem}
-.skill-badge{display:flex;align-items:center;gap:0.6rem;padding:0.65rem 1.1rem;border-radius:100px;background:rgba(255,255,255,0.03);border:1px solid rgba(255,255,255,0.08);position:relative;overflow:hidden;cursor:default;transition:all 0.3s;animation:badgeFloat ease-in-out infinite}
-.skill-badge:nth-child(1){animation-duration:3s;animation-delay:0s}
-.skill-badge:nth-child(2){animation-duration:3.5s;animation-delay:0.3s}
-.skill-badge:nth-child(3){animation-duration:4s;animation-delay:0.6s}
-.skill-badge:nth-child(4){animation-duration:3.2s;animation-delay:0.9s}
-@keyframes badgeFloat{0%,100%{transform:translateY(0)}50%{transform:translateY(-4px)}}
-.skill-badge::before{content:'';position:absolute;inset:0;background:linear-gradient(135deg,var(--c1),var(--c2));opacity:0.08;transition:opacity 0.3s}
-.skill-badge:hover{transform:translateY(-5px) scale(1.06);border-color:var(--c1);box-shadow:0 0 20px rgba(77,142,240,0.3),0 0 40px rgba(77,142,240,0.15);animation:none}
-.skill-badge:hover::before{opacity:0.18}
-.sb-icon{font-size:1.1rem;flex-shrink:0}
-.sb-name{font-size:0.88rem;font-weight:600;color:#e8eef8;white-space:nowrap}
-.sb-level{font-size:0.65rem;font-family:var(--mono);color:var(--muted);background:rgba(255,255,255,0.06);padding:0.15rem 0.5rem;border-radius:100px;white-space:nowrap;margin-left:0.2rem}
+.skills-meters{display:flex;flex-direction:column;gap:2.5rem}
+.meter-category{background:var(--card);border:1px solid var(--border);border-radius:16px;padding:1.75rem;transition:border-color 0.3s}
+.meter-category:hover{border-color:rgba(77,142,240,0.25)}
+.meter-cat-title{font-size:0.75rem;font-weight:600;color:#8899b8;letter-spacing:0.15em;text-transform:uppercase;margin-bottom:1.5rem;display:flex;align-items:center;gap:0.6rem}
+.meter-cat-title span{font-size:1rem}
+.meter-row{display:flex;align-items:center;gap:1.25rem;margin-bottom:1rem}
+.meter-row:last-child{margin-bottom:0}
+.meter-info{display:flex;justify-content:space-between;align-items:center;min-width:140px}
+.meter-name{font-size:0.88rem;font-weight:500;color:#e8eef8}
+.meter-pct{font-family:var(--mono);font-size:0.68rem;color:var(--muted)}
+.meter-track{flex:1;display:flex;gap:3px;align-items:flex-end;height:24px}
+.meter-track .seg{width:100%;border-radius:3px;background:rgba(255,255,255,0.05);transition:height 1.2s cubic-bezier(0.22,1,0.36,1),background 0.3s}
+.meter-track .seg.lit{background:var(--seg-color)}
+.meter-track .seg:nth-child(odd){height:60%}
+.meter-track .seg:nth-child(even){height:100%}
+.meter-track .seg.lit:nth-child(odd){height:65%;filter:brightness(0.85)}
+.meter-track .seg.lit:nth-child(even){height:100%}
 
 .projects-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(280px,1fr));gap:1.5rem}
 .flip-card{height:230px;perspective:1200px;cursor:pointer}
@@ -155,26 +154,30 @@ nav.scrolled{background:rgba(6,9,18,0.95);border-bottom:1px solid var(--border);
 .tag{font-family:var(--mono);font-size:0.62rem;color:var(--accent3);border:1px solid rgba(77,142,240,0.2);padding:0.15rem 0.5rem;border-radius:4px;background:rgba(77,142,240,0.06)}
 .flip-hint{font-family:var(--mono);font-size:0.68rem;color:var(--muted);text-align:center;margin-bottom:1.5rem;opacity:0.6;letter-spacing:0.08em}
 
-.contact-wrap{display:grid;grid-template-columns:1fr 1fr;gap:3rem}
-.contact-left h3{font-size:1.6rem;font-weight:800;color:#e8eef8;margin-bottom:0.75rem}
-.contact-left p{color:var(--muted);font-size:0.9rem;line-height:1.85;margin-bottom:1.5rem}
-.contact-item{display:flex;align-items:center;gap:1rem;padding:0.9rem 1.1rem;background:var(--card);border:1px solid var(--border);border-radius:12px;margin-bottom:0.7rem;text-decoration:none;transition:all 0.3s;position:relative;overflow:hidden}
-.contact-item::before{content:'';position:absolute;left:0;top:0;bottom:0;width:3px;background:linear-gradient(to bottom,var(--accent2),var(--accent3));transform:scaleY(0);transform-origin:top;transition:transform 0.3s}
-.contact-item:hover{border-color:rgba(77,142,240,0.3);transform:translateX(8px)}
-.contact-item:hover::before{transform:scaleY(1)}
-.ci-icon{width:36px;height:36px;border-radius:8px;background:linear-gradient(135deg,var(--accent2),var(--accent));display:flex;align-items:center;justify-content:center;font-size:1rem;flex-shrink:0;transition:transform 0.3s}
-.contact-item:hover .ci-icon{transform:rotate(-10deg) scale(1.1)}
-.ci-text{font-family:var(--mono);font-size:0.78rem;color:var(--muted);transition:color 0.2s}
-.contact-item:hover .ci-text{color:var(--accent3)}
-.contact-form{display:flex;flex-direction:column;gap:0.9rem}
-.form-label{font-family:var(--mono);font-size:0.68rem;color:var(--muted);letter-spacing:0.1em;text-transform:uppercase;display:block;margin-bottom:0.3rem}
-.form-input{background:var(--card);border:1px solid var(--border);color:var(--text);font-family:var(--sans);font-size:0.9rem;padding:0.8rem 1rem;border-radius:10px;width:100%;outline:none;transition:all 0.3s}
-.form-input:focus{border-color:var(--accent);box-shadow:0 0 0 3px rgba(37,99,235,0.12)}
-textarea.form-input{min-height:110px;resize:vertical}
-.form-btn{background:linear-gradient(135deg,var(--accent2),var(--accent));color:#fff;border:none;font-family:var(--sans);font-weight:700;font-size:0.88rem;padding:0.9rem;border-radius:10px;cursor:pointer;transition:all 0.3s;position:relative;overflow:hidden;animation:btnGlow 2.5s ease-in-out infinite}
-.form-btn::after{content:'';position:absolute;top:50%;left:-100%;width:50px;height:100%;background:rgba(255,255,255,0.2);transform:skewX(-20deg) translateY(-50%);animation:btnShine 3s ease-in-out infinite}
-@keyframes btnShine{0%{left:-100%}100%{left:250%}}
-.form-btn:hover{transform:translateY(-3px);animation:none;box-shadow:0 10px 30px rgba(37,99,235,0.6)}
+.contact-intro{margin-bottom:3rem}
+.contact-intro p{color:var(--muted);font-size:1rem;line-height:1.9;max-width:600px;border-left:2px solid var(--accent2);padding-left:1.25rem}
+.contact-main{display:grid;grid-template-columns:1fr 1fr;gap:3rem;align-items:start}
+.contact-link-title,.contact-form-title{font-family:var(--mono);font-size:0.72rem;color:var(--muted);letter-spacing:0.15em;text-transform:uppercase;margin-bottom:1.5rem}
+.clink{display:flex;align-items:center;justify-content:space-between;padding:1.1rem 0;border-bottom:1px solid var(--border);text-decoration:none;transition:all 0.25s;group:true}
+.clink:first-of-type{border-top:1px solid var(--border)}
+.clink:hover{padding-left:0.5rem}
+.clink-left{display:flex;align-items:center;gap:1rem}
+.clink-num{font-family:var(--mono);font-size:0.65rem;color:rgba(77,142,240,0.4);min-width:20px}
+.clink-icon{font-size:1.1rem;width:36px;height:36px;display:flex;align-items:center;justify-content:center;background:rgba(77,142,240,0.06);border:1px solid var(--border);border-radius:8px;transition:all 0.25s}
+.clink:hover .clink-icon{background:rgba(77,142,240,0.12);border-color:rgba(77,142,240,0.3);transform:scale(1.05)}
+.clink-label{font-family:var(--mono);font-size:0.65rem;color:var(--muted);text-transform:uppercase;letter-spacing:0.1em;margin-bottom:0.2rem}
+.clink-val{font-size:0.88rem;font-weight:500;color:#c0cfe8;transition:color 0.25s}
+.clink:hover .clink-val{color:var(--accent3)}
+.clink-arrow{font-size:1rem;color:var(--border);transition:all 0.25s}
+.clink:hover .clink-arrow{color:var(--accent3);transform:translateX(4px)}
+.contact-form{display:flex;flex-direction:column;gap:1rem}
+.form-row{display:grid;grid-template-columns:1fr 1fr;gap:1rem}
+.form-label{font-family:var(--mono);font-size:0.65rem;color:var(--muted);letter-spacing:0.1em;text-transform:uppercase;display:block;margin-bottom:0.35rem}
+.form-input{background:rgba(255,255,255,0.03);border:1px solid var(--border);color:var(--text);font-family:var(--sans);font-size:0.9rem;padding:0.85rem 1rem;border-radius:8px;width:100%;outline:none;transition:all 0.3s}
+.form-input:focus{border-color:rgba(77,142,240,0.5);background:rgba(77,142,240,0.04);box-shadow:0 0 0 3px rgba(37,99,235,0.08)}
+textarea.form-input{min-height:120px;resize:vertical}
+.form-btn{background:linear-gradient(135deg,var(--accent2),var(--accent));color:#fff;border:none;font-family:var(--sans);font-weight:600;font-size:0.88rem;padding:0.9rem 1.5rem;border-radius:8px;cursor:pointer;transition:all 0.3s;letter-spacing:0.04em;animation:btnGlow 2.5s ease-in-out infinite;align-self:flex-start}
+.form-btn:hover{transform:translateY(-2px);animation:none;box-shadow:0 8px 25px rgba(37,99,235,0.5)}
 
 footer{text-align:center;padding:2rem;border-top:1px solid var(--border);font-family:var(--mono);font-size:0.72rem;color:var(--muted);position:relative;z-index:1}
 footer span{background:linear-gradient(135deg,var(--accent3),#e8eef8);-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text;font-weight:700}
@@ -264,40 +267,35 @@ footer span{background:linear-gradient(135deg,var(--accent3),#e8eef8);-webkit-ba
 
 <section class="section" id="skills">
   <div class="sr"><div class="section-eyebrow">// 02. tech_stack</div><div class="section-title">My <span>Skills</span></div></div>
+  <div class="skills-meters sr">
 
-  <div class="skill-group sr">
-    <div class="sg-header"><span class="sg-icon">💻</span><span class="sg-title">Programming</span></div>
-    <div class="badge-wrap">
-      <div class="skill-badge" style="--c1:#4d8ef0;--c2:#2563eb"><span class="sb-icon">🐍</span><span class="sb-name">Python</span><span class="sb-level">Intermediate</span></div>
-      <div class="skill-badge" style="--c1:#38bdf8;--c2:#0284c7"><span class="sb-icon">🗄️</span><span class="sb-name">SQL</span><span class="sb-level">Beginner</span></div>
+    <div class="meter-category">
+      <div class="meter-cat-title"><span>💻</span> Programming</div>
+      <div class="meter-row"><div class="meter-info"><span class="meter-name">Python</span><span class="meter-pct">65%</span></div><div class="meter-track"><div class="meter-bars" data-pct="65" data-color="#4d8ef0"></div></div></div>
+      <div class="meter-row"><div class="meter-info"><span class="meter-name">SQL</span><span class="meter-pct">45%</span></div><div class="meter-track"><div class="meter-bars" data-pct="45" data-color="#38bdf8"></div></div></div>
     </div>
-  </div>
 
-  <div class="skill-group sr">
-    <div class="sg-header"><span class="sg-icon">📊</span><span class="sg-title">Data Science Libraries</span></div>
-    <div class="badge-wrap">
-      <div class="skill-badge" style="--c1:#6366f1;--c2:#4338ca"><span class="sb-icon">🔢</span><span class="sb-name">NumPy</span><span class="sb-level">Arrays and Math</span></div>
-      <div class="skill-badge" style="--c1:#8b5cf6;--c2:#6d28d9"><span class="sb-icon">🐼</span><span class="sb-name">Pandas</span><span class="sb-level">Data Wrangling</span></div>
-      <div class="skill-badge" style="--c1:#ec4899;--c2:#be185d"><span class="sb-icon">📈</span><span class="sb-name">Matplotlib</span><span class="sb-level">Visualization</span></div>
-      <div class="skill-badge" style="--c1:#f59e0b;--c2:#b45309"><span class="sb-icon">🎨</span><span class="sb-name">Seaborn</span><span class="sb-level">Statistical Plots</span></div>
+    <div class="meter-category">
+      <div class="meter-cat-title"><span>📊</span> Data Science Libraries</div>
+      <div class="meter-row"><div class="meter-info"><span class="meter-name">NumPy</span><span class="meter-pct">60%</span></div><div class="meter-track"><div class="meter-bars" data-pct="60" data-color="#6366f1"></div></div></div>
+      <div class="meter-row"><div class="meter-info"><span class="meter-name">Pandas</span><span class="meter-pct">60%</span></div><div class="meter-track"><div class="meter-bars" data-pct="60" data-color="#8b5cf6"></div></div></div>
+      <div class="meter-row"><div class="meter-info"><span class="meter-name">Matplotlib</span><span class="meter-pct">55%</span></div><div class="meter-track"><div class="meter-bars" data-pct="55" data-color="#ec4899"></div></div></div>
+      <div class="meter-row"><div class="meter-info"><span class="meter-name">Seaborn</span><span class="meter-pct">50%</span></div><div class="meter-track"><div class="meter-bars" data-pct="50" data-color="#f59e0b"></div></div></div>
     </div>
-  </div>
 
-  <div class="skill-group sr">
-    <div class="sg-header"><span class="sg-icon">🤖</span><span class="sg-title">Machine Learning</span></div>
-    <div class="badge-wrap">
-      <div class="skill-badge" style="--c1:#10b981;--c2:#047857"><span class="sb-icon">⚙️</span><span class="sb-name">Scikit-learn</span><span class="sb-level">ML Models</span></div>
-      <div class="skill-badge" style="--c1:#f97316;--c2:#c2410c"><span class="sb-icon">📐</span><span class="sb-name">Statistics</span><span class="sb-level">Probability</span></div>
+    <div class="meter-category">
+      <div class="meter-cat-title"><span>🤖</span> Machine Learning</div>
+      <div class="meter-row"><div class="meter-info"><span class="meter-name">Scikit-learn</span><span class="meter-pct">50%</span></div><div class="meter-track"><div class="meter-bars" data-pct="50" data-color="#10b981"></div></div></div>
+      <div class="meter-row"><div class="meter-info"><span class="meter-name">Statistics</span><span class="meter-pct">45%</span></div><div class="meter-track"><div class="meter-bars" data-pct="45" data-color="#f97316"></div></div></div>
     </div>
-  </div>
 
-  <div class="skill-group sr">
-    <div class="sg-header"><span class="sg-icon">🛠️</span><span class="sg-title">Tools</span></div>
-    <div class="badge-wrap">
-      <div class="skill-badge" style="--c1:#f59e0b;--c2:#d97706"><span class="sb-icon">📓</span><span class="sb-name">Jupyter Notebook</span><span class="sb-level">Notebooks</span></div>
-      <div class="skill-badge" style="--c1:#4d8ef0;--c2:#1d4ed8"><span class="sb-icon">☁️</span><span class="sb-name">Google Colab</span><span class="sb-level">Cloud</span></div>
-      <div class="skill-badge" style="--c1:#a855f7;--c2:#7c3aed"><span class="sb-icon">🐙</span><span class="sb-name">Git and GitHub</span><span class="sb-level">Version Control</span></div>
+    <div class="meter-category">
+      <div class="meter-cat-title"><span>🛠️</span> Tools</div>
+      <div class="meter-row"><div class="meter-info"><span class="meter-name">Jupyter Notebook</span><span class="meter-pct">60%</span></div><div class="meter-track"><div class="meter-bars" data-pct="60" data-color="#f59e0b"></div></div></div>
+      <div class="meter-row"><div class="meter-info"><span class="meter-name">Google Colab</span><span class="meter-pct">45%</span></div><div class="meter-track"><div class="meter-bars" data-pct="45" data-color="#4d8ef0"></div></div></div>
+      <div class="meter-row"><div class="meter-info"><span class="meter-name">Git and GitHub</span><span class="meter-pct">40%</span></div><div class="meter-track"><div class="meter-bars" data-pct="40" data-color="#a855f7"></div></div></div>
     </div>
+
   </div>
 </section>
 
@@ -338,7 +336,7 @@ footer span{background:linear-gradient(135deg,var(--accent3),#e8eef8);-webkit-ba
     <div class="sr-left">
       <h3>Let's Connect 👋</h3>
       <p>Whether it's a project, collaboration, or just a data chat — reach out anytime!</p>
-      <a href="mailto:bhavaneshnaidu14@gmail.com" class="contact-item" target="_blank"><div class="ci-icon">📧</div><div class="ci-text">bhavaneshnaidu14@gmail.com</div></a>
+      <a href="/cdn-cgi/l/email-protection#9af8f2fbecfbf4ffe9f2f4fbf3feefabaedafdf7fbf3f6b4f9f5f7" class="contact-item" target="_blank"><div class="ci-icon">📧</div><div class="ci-text"><span class="__cf_email__" data-cfemail="fb99939a8d9a959e8893959a929f8ecacfbb9c969a9297d5989496">[email&#160;protected]</span></div></a>
       <a href="#" class="contact-item"><div class="ci-icon">📍</div><div class="ci-text">Andhra Pradesh, India</div></a>
       <a href="https://www.gitam.edu" class="contact-item" target="_blank"><div class="ci-icon">🎓</div><div class="ci-text">GITAM University</div></a>
       <a href="https://github.com/bhevanesh_ds" class="contact-item" target="_blank"><div class="ci-icon">🐙</div><div class="ci-text">github.com/bhevanesh_ds</div></a>
@@ -354,7 +352,7 @@ footer span{background:linear-gradient(135deg,var(--accent3),#e8eef8);-webkit-ba
 
 <footer>Designed and Built with 💙 by <span>Bhevanesh Naidu</span> · 2025</footer>
 
-<script>
+<script data-cfasync="false" src="/cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js"></script><script>
 var st=document.getElementById('stars');
 for(var i=0;i<80;i++){var s=document.createElement('div');s.className='star';var sz=Math.random()*2+0.5;s.style.cssText='width:'+sz+'px;height:'+sz+'px;left:'+(Math.random()*100)+'%;top:'+(Math.random()*100)+'%;opacity:'+(Math.random()*0.5+0.1)+';animation-duration:'+(2+Math.random()*5)+'s;animation-delay:'+(Math.random()*5)+'s';st.appendChild(s);}
 var pc=document.getElementById('particles');
@@ -367,8 +365,4 @@ type();
 var io=new IntersectionObserver(function(entries){entries.forEach(function(e){if(e.isIntersecting){e.target.classList.add('visible');io.unobserve(e.target);}});},{threshold:0.1});
 document.querySelectorAll('.sr,.sr-left,.sr-right').forEach(function(el){io.observe(el);});
 var so=new IntersectionObserver(function(entries){entries.forEach(function(e){if(e.isIntersecting){var f=e.target.querySelector('.bar-fill');if(f){f.style.width=e.target.getAttribute('data-level')+'%';}so.unobserve(e.target);}});},{threshold:0.3});
-document.querySelectorAll('.skill-item').forEach(function(c){so.observe(c);});
-document.querySelectorAll('a[href^="#"]').forEach(function(a){a.addEventListener('click',function(e){e.preventDefault();var t=document.querySelector(a.getAttribute('href'));if(t)t.scrollIntoView({behavior:'smooth'});});});
-</script>
-</body>
-</html>
+document.querySelectorAll('.skill-item').forEach(function(c){so.observe
