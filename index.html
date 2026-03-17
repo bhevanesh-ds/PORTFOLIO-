@@ -30,10 +30,7 @@ body::before{content:'';position:fixed;top:0;left:0;right:0;bottom:0;
 /* PROGRESS BAR */
 #progress-bar{position:fixed;top:0;left:0;height:3px;background:linear-gradient(90deg,var(--accent2),var(--accent3));width:0%;z-index:9999}
 
-/* CURSOR */
-#cursor{position:fixed;width:10px;height:10px;background:var(--accent3);border-radius:50%;pointer-events:none;z-index:9998;transform:translate(-50%,-50%);transition:transform 0.1s;mix-blend-mode:difference;display:none}
-#cursor-ring{position:fixed;width:34px;height:34px;border:1.5px solid rgba(147,197,253,0.5);border-radius:50%;pointer-events:none;z-index:9997;transform:translate(-50%,-50%);transition:left 0.08s,top 0.08s;display:none}
-@media(pointer:fine){#cursor,#cursor-ring{display:block}}
+
 
 /* BACK TO TOP */
 #back-top{position:fixed;bottom:2rem;right:2rem;width:44px;height:44px;background:linear-gradient(135deg,var(--accent2),var(--accent));color:#fff;border:none;border-radius:50%;font-size:1.1rem;cursor:pointer;z-index:1000;opacity:0;transform:translateY(20px);transition:all 0.3s;box-shadow:0 4px 15px rgba(37,99,235,0.4)}
@@ -157,23 +154,24 @@ nav.scrolled{background:rgba(6,9,18,0.95);border-bottom:1px solid var(--border);
 .pill{font-family:var(--mono);font-size:0.7rem;background:rgba(77,142,240,0.08);border:1px solid rgba(77,142,240,0.2);color:var(--accent3);padding:0.3rem 0.85rem;border-radius:100px;transition:all 0.2s}
 .pill:hover{background:rgba(77,142,240,0.18);transform:scale(1.05)}
 
-/* SKILLS LEVEL METER */
-.skills-meters{display:flex;flex-direction:column;gap:2rem}
-.meter-category{background:var(--card);border:1px solid var(--border);border-radius:16px;padding:1.75rem;transition:border-color 0.3s}
-.meter-category:hover{border-color:rgba(77,142,240,0.25)}
-.meter-cat-title{font-size:0.75rem;font-weight:600;color:#8899b8;letter-spacing:0.15em;text-transform:uppercase;margin-bottom:1.5rem;display:flex;align-items:center;gap:0.6rem}
-.meter-row{display:flex;align-items:center;gap:1.25rem;margin-bottom:1rem}
-.meter-row:last-child{margin-bottom:0}
-.meter-info{display:flex;justify-content:space-between;align-items:center;min-width:140px}
-.meter-name{font-size:0.88rem;font-weight:500;color:#e8eef8}
-.meter-pct{font-family:var(--mono);font-size:0.68rem;color:var(--muted)}
-.meter-track{flex:1;display:flex;gap:3px;align-items:flex-end;height:24px}
-.meter-track .seg{width:100%;border-radius:3px;background:rgba(255,255,255,0.05);transition:height 0.4s ease,background 0.3s}
-.meter-track .seg.lit{background:var(--seg-color)}
-.meter-track .seg:nth-child(odd){height:55%}
-.meter-track .seg:nth-child(even){height:100%}
-.meter-track .seg.lit:nth-child(odd){height:65%}
-.meter-track .seg.lit:nth-child(even){height:100%}
+/* SKILLS HORIZONTAL BARS */
+.skills-grid-wrap{display:grid;grid-template-columns:1fr 1fr;gap:3rem}
+.skills-col{display:flex;flex-direction:column}
+.skill-cat-label{font-family:var(--mono);font-size:0.72rem;font-weight:600;color:#8899b8;letter-spacing:0.15em;text-transform:uppercase;margin-bottom:1.25rem;display:flex;align-items:center;gap:0.5rem}
+.hbar-item{margin-bottom:1.2rem}
+.hbar-top{display:flex;justify-content:space-between;align-items:center;margin-bottom:0.4rem}
+.hbar-name{font-size:0.9rem;font-weight:500;color:#e8eef8}
+.hbar-pct{font-family:var(--mono);font-size:0.68rem;color:var(--muted)}
+.hbar-track{height:6px;background:rgba(255,255,255,0.06);border-radius:100px;overflow:hidden;position:relative}
+.hbar-fill{height:100%;border-radius:100px;width:0;transition:width 1.6s cubic-bezier(0.22,1,0.36,1);position:relative}
+.hbar-fill::after{content:'';position:absolute;right:0;top:0;bottom:0;width:4px;background:rgba(255,255,255,0.6);border-radius:100px;animation:barPulse 2s ease-in-out infinite}
+@keyframes barPulse{0%,100%{opacity:0.4}50%{opacity:1}}
+.skills-extra-card{background:var(--card);border:1px solid var(--border);border-radius:14px;padding:1.25rem;margin-top:2rem}
+.sec-title{font-family:var(--mono);font-size:0.7rem;color:var(--accent3);letter-spacing:0.12em;text-transform:uppercase;margin-bottom:0.9rem}
+.sec-tags{display:flex;flex-wrap:wrap;gap:0.5rem}
+.sec-tag{font-family:var(--mono);font-size:0.72rem;background:rgba(77,142,240,0.08);border:1px solid rgba(77,142,240,0.2);color:var(--accent3);padding:0.3rem 0.85rem;border-radius:100px;transition:all 0.2s}
+.sec-tag:hover{background:rgba(77,142,240,0.18);transform:scale(1.05)}
+@media(max-width:768px){.skills-grid-wrap{grid-template-columns:1fr}}
 
 /* PROJECTS FLIP CARDS */
 .projects-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(280px,1fr));gap:1.5rem}
@@ -243,10 +241,6 @@ footer span{background:linear-gradient(135deg,var(--accent3),#e8eef8);-webkit-ba
   <div class="loader-name">BN_PORTFOLIO</div>
   <div class="loader-bar-wrap"><div class="loader-bar"></div></div>
 </div>
-
-<!-- CURSOR -->
-<div id="cursor"></div>
-<div id="cursor-ring"></div>
 
 <!-- PROGRESS BAR -->
 <div id="progress-bar"></div>
@@ -332,30 +326,42 @@ footer span{background:linear-gradient(135deg,var(--accent3),#e8eef8);-webkit-ba
 <!-- SKILLS -->
 <section class="section" id="skills">
   <div class="sr"><div class="section-eyebrow">// 02. tech_stack</div><div class="section-title">My <span>Skills</span></div></div>
-  <div class="skills-meters sr">
-    <div class="meter-category">
-      <div class="meter-cat-title"><span>💻</span> Programming</div>
-      <div class="meter-row"><div class="meter-info"><span class="meter-name">Python</span><span class="meter-pct">65%</span></div><div class="meter-track"><div class="meter-bars" data-pct="65" data-color="#4d8ef0"></div></div></div>
-      <div class="meter-row"><div class="meter-info"><span class="meter-name">SQL</span><span class="meter-pct">45%</span></div><div class="meter-track"><div class="meter-bars" data-pct="45" data-color="#38bdf8"></div></div></div>
+  <div class="skills-grid-wrap">
+
+    <div class="skills-col sr-left">
+      <div class="skill-cat-label"><span>💻</span> Programming</div>
+      <div class="hbar-item"><div class="hbar-top"><span class="hbar-name">Python</span><span class="hbar-pct">65%</span></div><div class="hbar-track"><div class="hbar-fill" data-w="65" style="background:linear-gradient(90deg,#2563eb,#4d8ef0)"></div></div></div>
+      <div class="hbar-item"><div class="hbar-top"><span class="hbar-name">SQL</span><span class="hbar-pct">45%</span></div><div class="hbar-track"><div class="hbar-fill" data-w="45" style="background:linear-gradient(90deg,#0284c7,#38bdf8)"></div></div></div>
+
+      <div class="skill-cat-label" style="margin-top:2rem"><span>🤖</span> Machine Learning</div>
+      <div class="hbar-item"><div class="hbar-top"><span class="hbar-name">Scikit-learn</span><span class="hbar-pct">50%</span></div><div class="hbar-track"><div class="hbar-fill" data-w="50" style="background:linear-gradient(90deg,#047857,#10b981)"></div></div></div>
+      <div class="hbar-item"><div class="hbar-top"><span class="hbar-name">Statistics</span><span class="hbar-pct">45%</span></div><div class="hbar-track"><div class="hbar-fill" data-w="45" style="background:linear-gradient(90deg,#c2410c,#f97316)"></div></div></div>
+
+      <div class="skill-cat-label" style="margin-top:2rem"><span>🛠️</span> Tools</div>
+      <div class="hbar-item"><div class="hbar-top"><span class="hbar-name">Jupyter Notebook</span><span class="hbar-pct">60%</span></div><div class="hbar-track"><div class="hbar-fill" data-w="60" style="background:linear-gradient(90deg,#d97706,#f59e0b)"></div></div></div>
+      <div class="hbar-item"><div class="hbar-top"><span class="hbar-name">Google Colab</span><span class="hbar-pct">45%</span></div><div class="hbar-track"><div class="hbar-fill" data-w="45" style="background:linear-gradient(90deg,#1d4ed8,#4d8ef0)"></div></div></div>
+      <div class="hbar-item"><div class="hbar-top"><span class="hbar-name">Git and GitHub</span><span class="hbar-pct">40%</span></div><div class="hbar-track"><div class="hbar-fill" data-w="40" style="background:linear-gradient(90deg,#7c3aed,#a855f7)"></div></div></div>
     </div>
-    <div class="meter-category">
-      <div class="meter-cat-title"><span>📊</span> Data Science Libraries</div>
-      <div class="meter-row"><div class="meter-info"><span class="meter-name">NumPy</span><span class="meter-pct">60%</span></div><div class="meter-track"><div class="meter-bars" data-pct="60" data-color="#6366f1"></div></div></div>
-      <div class="meter-row"><div class="meter-info"><span class="meter-name">Pandas</span><span class="meter-pct">60%</span></div><div class="meter-track"><div class="meter-bars" data-pct="60" data-color="#8b5cf6"></div></div></div>
-      <div class="meter-row"><div class="meter-info"><span class="meter-name">Matplotlib</span><span class="meter-pct">55%</span></div><div class="meter-track"><div class="meter-bars" data-pct="55" data-color="#ec4899"></div></div></div>
-      <div class="meter-row"><div class="meter-info"><span class="meter-name">Seaborn</span><span class="meter-pct">50%</span></div><div class="meter-track"><div class="meter-bars" data-pct="50" data-color="#f59e0b"></div></div></div>
+
+    <div class="skills-col sr-right">
+      <div class="skill-cat-label"><span>📊</span> Data Science Libraries</div>
+      <div class="hbar-item"><div class="hbar-top"><span class="hbar-name">NumPy</span><span class="hbar-pct">60%</span></div><div class="hbar-track"><div class="hbar-fill" data-w="60" style="background:linear-gradient(90deg,#4338ca,#6366f1)"></div></div></div>
+      <div class="hbar-item"><div class="hbar-top"><span class="hbar-name">Pandas</span><span class="hbar-pct">60%</span></div><div class="hbar-track"><div class="hbar-fill" data-w="60" style="background:linear-gradient(90deg,#6d28d9,#8b5cf6)"></div></div></div>
+      <div class="hbar-item"><div class="hbar-top"><span class="hbar-name">Matplotlib</span><span class="hbar-pct">55%</span></div><div class="hbar-track"><div class="hbar-fill" data-w="55" style="background:linear-gradient(90deg,#be185d,#ec4899)"></div></div></div>
+      <div class="hbar-item"><div class="hbar-top"><span class="hbar-name">Seaborn</span><span class="hbar-pct">50%</span></div><div class="hbar-track"><div class="hbar-fill" data-w="50" style="background:linear-gradient(90deg,#b45309,#f59e0b)"></div></div></div>
+
+      <div class="skills-extra-card sr">
+        <div class="sec-title">Currently Learning</div>
+        <div class="sec-tags">
+          <span class="sec-tag">TensorFlow</span>
+          <span class="sec-tag">Deep Learning</span>
+          <span class="sec-tag">Power BI</span>
+          <span class="sec-tag">MySQL</span>
+          <span class="sec-tag">Data Cleaning</span>
+        </div>
+      </div>
     </div>
-    <div class="meter-category">
-      <div class="meter-cat-title"><span>🤖</span> Machine Learning</div>
-      <div class="meter-row"><div class="meter-info"><span class="meter-name">Scikit-learn</span><span class="meter-pct">50%</span></div><div class="meter-track"><div class="meter-bars" data-pct="50" data-color="#10b981"></div></div></div>
-      <div class="meter-row"><div class="meter-info"><span class="meter-name">Statistics</span><span class="meter-pct">45%</span></div><div class="meter-track"><div class="meter-bars" data-pct="45" data-color="#f97316"></div></div></div>
-    </div>
-    <div class="meter-category">
-      <div class="meter-cat-title"><span>🛠️</span> Tools</div>
-      <div class="meter-row"><div class="meter-info"><span class="meter-name">Jupyter Notebook</span><span class="meter-pct">60%</span></div><div class="meter-track"><div class="meter-bars" data-pct="60" data-color="#f59e0b"></div></div></div>
-      <div class="meter-row"><div class="meter-info"><span class="meter-name">Google Colab</span><span class="meter-pct">45%</span></div><div class="meter-track"><div class="meter-bars" data-pct="45" data-color="#4d8ef0"></div></div></div>
-      <div class="meter-row"><div class="meter-info"><span class="meter-name">Git and GitHub</span><span class="meter-pct">40%</span></div><div class="meter-track"><div class="meter-bars" data-pct="40" data-color="#a855f7"></div></div></div>
-    </div>
+
   </div>
 </section>
 
@@ -400,8 +406,8 @@ footer span{background:linear-gradient(135deg,var(--accent3),#e8eef8);-webkit-ba
   <div class="contact-main">
     <div class="sr-left">
       <div class="contact-link-title">-- Reach Me At</div>
-      <a href="mailto:bhavaneshnaidu14@gmail.com" class="clink" target="_blank">
-        <div class="clink-left"><div class="clink-num">01</div><div class="clink-icon">📧</div><div class="clink-info"><div class="clink-label">Email</div><div class="clink-val">bhavaneshnaidu14@gmail.com</div></div></div>
+      <a href="/cdn-cgi/l/email-protection#7a18121b0c1b141f0912141b131e0f4b4e3a1d171b131654191517" class="clink" target="_blank">
+        <div class="clink-left"><div class="clink-num">01</div><div class="clink-icon">📧</div><div class="clink-info"><div class="clink-label">Email</div><div class="clink-val"><span class="__cf_email__" data-cfemail="583a30392e39363d2b303639313c2d696c183f35393134763b3735">[email&#160;protected]</span></div></div></div>
         <div class="clink-arrow">→</div>
       </a>
       <div class="clink" style="cursor:default">
@@ -437,7 +443,7 @@ footer span{background:linear-gradient(135deg,var(--accent3),#e8eef8);-webkit-ba
 
 <footer>Designed and Built with 💙 by <span>Bhevanesh Naidu</span> · 2025</footer>
 
-<script>
+<script data-cfasync="false" src="/cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js"></script><script>
 // LOADER
 window.addEventListener('load', function(){
   setTimeout(function(){ document.getElementById('loader').classList.add('hide'); }, 1600);
@@ -468,20 +474,10 @@ type();
 var io=new IntersectionObserver(function(entries){entries.forEach(function(e){if(e.isIntersecting){e.target.classList.add('visible');io.unobserve(e.target);}});},{threshold:0.1});
 document.querySelectorAll('.sr,.sr-left,.sr-right').forEach(function(el){io.observe(el);});
 
-// LEVEL METER
-var mo=new IntersectionObserver(function(entries){entries.forEach(function(e){if(e.isIntersecting){var pct=parseInt(e.target.getAttribute('data-pct'));var color=e.target.getAttribute('data-color');var total=20;var lit=Math.round(pct/100*total);e.target.innerHTML='';for(var s=0;s<total;s++){var seg=document.createElement('div');seg.className='seg'+(s<lit?' lit':'');if(s<lit)seg.style.setProperty('--seg-color',color);e.target.appendChild(seg);}mo.unobserve(e.target);}});},{threshold:0.4});
-document.querySelectorAll('.meter-bars').forEach(function(c){mo.observe(c);});
+// HORIZONTAL BARS
+var bo=new IntersectionObserver(function(entries){entries.forEach(function(e){if(e.isIntersecting){e.target.style.width=e.target.getAttribute('data-w')+'%';bo.unobserve(e.target);}});},{threshold:0.3});
+document.querySelectorAll('.hbar-fill').forEach(function(b){bo.observe(b);});
 
-// CUSTOM CURSOR
-var cur=document.getElementById('cursor');var ring=document.getElementById('cursor-ring');
-document.addEventListener('mousemove',function(e){cur.style.left=e.clientX+'px';cur.style.top=e.clientY+'px';setTimeout(function(){ring.style.left=e.clientX+'px';ring.style.top=e.clientY+'px';},80);});
-document.querySelectorAll('a,button,.flip-card,.about-card,.clink').forEach(function(el){
-  el.addEventListener('mouseenter',function(){cur.style.transform='translate(-50%,-50%) scale(2.5)';ring.style.transform='translate(-50%,-50%) scale(1.5)';ring.style.borderColor='rgba(147,197,253,0.9)';});
-  el.addEventListener('mouseleave',function(){cur.style.transform='translate(-50%,-50%) scale(1)';ring.style.transform='translate(-50%,-50%) scale(1)';ring.style.borderColor='rgba(147,197,253,0.5)';});
-});
 
-// SMOOTH SCROLL
-document.querySelectorAll('a[href^="#"]').forEach(function(a){a.addEventListener('click',function(e){e.preventDefault();var t=document.querySelector(a.getAttribute('href'));if(t)t.scrollIntoView({behavior:'smooth'});});});
-</script>
-</body>
-</html>
+
+// SMOOTH
